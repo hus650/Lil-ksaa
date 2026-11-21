@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>أوستا للإكساء | Ousta Lil Iksaa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;900&family=Playfair+Display:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fafaf8;--fg:#0c0c0c;--mute:#6a6a66;--line:rgba(0,0,0,.16);--soft:#efeeea;
+  --ar:'Cairo','Segoe UI',Tahoma,sans-serif;--en:'Playfair Display',Georgia,'Times New Roman',serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0b0b;--fg:#f4f4f0;--mute:#9a9a94;--line:rgba(255,255,255,.2);--soft:#161616;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b0b0b;--fg:#f4f4f0;--mute:#9a9a94;--line:rgba(255,255,255,.2);--soft:#161616;color-scheme:dark}
+html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--ar);font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+.en{font-family:var(--en);font-style:italic;font-weight:400;letter-spacing:.02em;direction:ltr;unicode-bidi:isolate;display:inline-block}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+
+/* Header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;flex-direction:column;line-height:1.1}
+.brand b{font-weight:900;font-size:22px}
+.brand .en{font-size:12px;color:var(--mute);margin-top:2px}
+nav{display:flex;gap:6px}
+nav a{padding:8px 14px;font-size:15px;font-weight:600;border-bottom:2px solid transparent;transition:.2s}
+nav a:hover{color:var(--mute)}
+nav a.on{border-color:var(--fg)}
+.burger{display:none;background:none;border:1px solid var(--fg);padding:6px 14px;font-weight:600;cursor:pointer}
+@media(max-width:860px){
+  .burger{display:block}
+  nav{position:absolute;inset:68px 0 auto;background:var(--bg);flex-direction:column;gap:0;border-bottom:1px solid var(--line);display:none;padding:6px 20px 14px}
+  nav.open{display:flex}
+  nav a{padding:12px 0;border-bottom:1px solid var(--line);font-size:17px}
+  nav a.on{border-bottom-color:var(--fg)}
+}
+
+/* Pages */
+.page{display:none;animation:in .5s ease}
+.page.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.page{animation:none}html{scroll-behavior:auto}}
+
+/* Hero */
+.hero{padding:64px 0 48px;position:relative}
+.kicker{font-size:14px;color:var(--mute);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.kicker .en{transform:rotate(-3deg);border:1px solid var(--fg);color:var(--fg);padding:1px 12px}
+h1{font-weight:900;font-size:clamp(54px,13vw,150px);line-height:1.05;margin:18px 0 0;letter-spacing:-.01em}
+h1 .light{font-weight:300}
+.accent{font-size:clamp(22px,4.4vw,46px);transform:rotate(-4deg) translateX(-8px);margin-top:6px;display:block;width:max-content;max-width:100%}
+.lead{max-width:620px;margin:34px 0 0;font-size:clamp(17px,2.2vw,21px);color:var(--mute)}
+.lead strong{color:var(--fg);font-weight:600}
+
+/* Services list */
+.list{margin:30px 0 0;border-top:1px solid var(--fg)}
+.row{display:grid;grid-template-columns:56px 1fr auto 28px;gap:12px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line);transition:.25s}
+.row:hover{padding-inline-start:14px;background:var(--soft)}
+.row .n{font-family:var(--en);font-style:italic;color:var(--mute);direction:ltr;text-align:right}
+.row .t{font-weight:600;font-size:clamp(20px,3.2vw,32px)}
+.row .tr{font-family:var(--en);font-style:italic;color:var(--mute);font-size:15px;transform:rotate(-3deg);direction:ltr}
+.row .ar{font-size:22px}
+@media(max-width:560px){.row{grid-template-columns:40px 1fr 24px}.row .tr{display:none}}
+
+/* Showcase: portrait always centered between two landscapes */
+.showcase{padding:70px 0 40px}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:26px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.sec-head h2{margin:0;font-size:clamp(24px,4vw,38px);font-weight:900}
+.sec-head .en{color:var(--mute);transform:rotate(2deg)}
+.trio{display:grid;grid-template-columns:1.6fr 1fr 1.6fr;gap:clamp(8px,2vw,22px);align-items:center}
+.trio .land{aspect-ratio:4/3}
+.trio .port{aspect-ratio:3/4}
+.trio figure{margin:0;overflow:hidden;background:var(--soft)}
+.trio img{width:100%;height:100%;object-fit:cover}
+.note{margin-top:14px;font-size:13px;color:var(--mute);text-align:center}
+
+/* Gallery pages */
+.ptitle{padding:56px 0 30px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.ptitle h1{font-size:clamp(44px,9vw,104px);margin:0}
+.ptitle .en{font-size:clamp(18px,3vw,30px);color:var(--mute);transform:rotate(-4deg);margin-bottom:12px}
+.grid{display:grid;gap:clamp(10px,2vw,22px);padding-bottom:70px}
+.grid.v{grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
+.grid.h{grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr))}
+.grid button{padding:0;border:0;background:var(--soft);cursor:zoom-in;overflow:hidden;display:block;width:100%}
+.grid.v button{aspect-ratio:3/4}
+.grid.h button{aspect-ratio:16/9}
+.grid img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.grid button:hover img{transform:scale(1.05)}
+.grid button:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:100;display:none;align-items:center;justify-content:center;padding:max(20px,env(safe-area-inset-top)) 20px max(20px,env(safe-area-inset-bottom))}
+.lb.on{display:flex}
+.lb img{max-width:100%;max-height:100%;object-fit:contain}
+.lb button{position:absolute;background:none;border:1px solid #fff;color:#fff;width:46px;height:46px;font-size:22px;cursor:pointer;line-height:1}
+.lb .x{top:calc(16px + env(safe-area-inset-top,0px));left:16px}
+.lb .nx{left:16px;top:50%}
+.lb .pv{right:16px;top:50%}
+.lb button:hover{background:#fff;color:#000}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(30px,6vw,80px);padding-bottom:80px}
+@media(max-width:860px){.contact{grid-template-columns:1fr}}
+.info dl{margin:0}
+.info dt{font-size:13px;color:var(--mute);margin-top:22px}
+.info dd{margin:2px 0 0;font-size:20px;font-weight:600}
+.info .num{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.btn{display:inline-block;padding:11px 24px;border:1px solid var(--fg);background:var(--fg);color:var(--bg);font-weight:600;cursor:pointer;font-size:16px;transition:.2s}
+.btn:hover{background:transparent;color:var(--fg)}
+.btn.ghost{background:transparent;color:var(--fg)}
+.btn.ghost:hover{background:var(--fg);color:var(--bg)}
+form{border:1px solid var(--fg);padding:clamp(20px,4vw,36px);position:relative}
+form h2{margin:0 0 4px;font-size:26px;font-weight:900}
+form .sub{color:var(--mute);font-size:14px;margin:0 0 18px}
+label{display:block;font-size:14px;font-weight:600;margin-top:16px}
+input,select,textarea{width:100%;margin-top:6px;padding:11px 12px;background:transparent;border:0;border-bottom:1px solid var(--fg);border-radius:0;outline:0}
+input:focus,select:focus,textarea:focus{background:var(--soft)}
+select option{background:var(--bg);color:var(--fg)}
+textarea{min-height:100px;resize:vertical}
+form .btn{margin-top:24px;width:100%}
+.err{color:var(--fg);font-size:13px;min-height:20px;margin-top:10px;font-weight:600}
+
+footer{border-top:1px solid var(--fg);padding:28px 0 40px;font-size:14px;color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.toast{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%) translateY(20px);background:var(--fg);color:var(--bg);padding:10px 22px;opacity:0;pointer-events:none;transition:.3s;z-index:120;font-weight:600}
+.toast.on{opacity:1;transform:translateX(-50%)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#home" aria-label="أوستا للإكساء"><b>أوستا للإكساء</b><span class="en">Right spot for our work</span></a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">القائمة</button>
+    <nav id="nav" aria-label="التنقل الرئيسي"></nav>
+  </div>
+</header>
+
+<main>
+  <!-- PAGE 1: HOME -->
+  <section class="page" id="p-home">
+    <div class="wrap hero">
+      <div class="kicker"><span>حلب - الخلدية - قرب جامع الغفران</span><span class="en">You came to the right place</span></div>
+      <h1>أوستا <span class="light">للإكساء</span></h1>
+      <span class="en accent">right place to see our craft</span>
+      <p class="lead"><strong>نصمم وننفذ</strong> كبائن الاستحمام وزجاج البلكونات وواجهات المباني بدقة الحرفي وذوق المعماري. كل قياس يُؤخذ في الموقع، وكل قطعة تُصنع لتدوم.</p>
+
+      <div class="list" id="services"></div>
+    </div>
+
+    <div class="wrap showcase">
+      <div class="sec-head"><h2>من أعمالنا</h2><span class="en">Right gallery, real work</span></div>
+      <div class="trio" id="trio"></div>
+    </div>
+  </section>
+
+  <!-- PAGE 2: SHOWERS (portrait) -->
+  <section class="page" id="p-shower">
+    <div class="wrap">
+      <div class="ptitle"><h1>كبائن الاستحمام</h1><span class="en">Duşakabin · Right here</span></div>
+      <div class="grid v" id="g-shower"></div>
+    </div>
+  </section>
+
+  <!-- PAGE 3: BALCONY (landscape) -->
+  <section class="page" id="p-balcony">
+    <div class="wrap">
+      <div class="ptitle"><h1>زجاج البلكون</h1><span class="en">Cam Balkon · Right place</span></div>
+      <div class="grid h" id="g-balcony"></div>
+    </div>
+  </section>
+
+  <!-- PAGE 4: FACADE (landscape) -->
+  <section class="page" id="p-facade">
+    <div class="wrap">
+      <div class="ptitle"><h1>أعمال الواجهات</h1><span class="en">Vechaat · You’re in the right spot</span></div>
+      <div class="grid h" id="g-facade"></div>
+    </div>
+  </section>
+
+  <!-- PAGE 5: CONTACT -->
+  <section class="page" id="p-contact">
+    <div class="wrap">
+      <div class="ptitle"><h1>تواصل معنا</h1><span class="en">Tavasal Maane · Right here</span></div>
+      <div class="contact">
+        <div class="info">
+          <dl>
+            <dt>الهاتف / واتساب</dt>
+            <dd><span class="num" id="phoneTxt"></span></dd>
+            <dt>المعرض</dt>
+            <dd>حلب، الخلدية، قرب جامع الغفران</dd>
+            <dt>ساعات العمل</dt>
+            <dd>السبت – الخميس، ١٠ صباحاً – ٧ مساءً</dd>
+          </dl>
+          <div class="acts">
+            <a class="btn" id="waBtn" target="_blank" rel="noopener">راسلنا على واتساب</a>
+            <a class="btn ghost" id="callBtn">اتصل الآن</a>
+            <button class="btn ghost" id="copyBtn" type="button">نسخ الرقم</button>
+          </div>
+        </div>
+
+        <form id="form" novalidate>
+          <h2>طلب معاينة وقياس</h2>
+          <p class="sub">زيارة القياس مجانية <span class="en">— right place to book</span></p>
+          <label>الاسم<input name="name" autocomplete="name" required></label>
+          <label>رقم الجوال<input name="phone" type="tel" inputmode="tel" autocomplete="tel" required></label>
+          <label>الخدمة المطلوبة
+            <select name="service">
+              <option>كبائن الاستحمام</option>
+              <option>زجاج البلكون</option>
+              <option>أعمال الواجهات</option>
+              <option>أخرى</option>
+            </select>
+          </label>
+          <label>تفاصيل إضافية<textarea name="msg"></textarea></label>
+          <div class="err" id="err" role="alert"></div>
+          <button class="btn" type="submit">إرسال الطلب عبر واتساب</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© أوستا للإكساء — جميع الحقوق محفوظة</span><span class="en">You’re in the right place</span></div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="عرض الصورة">
+  <button class="x" id="lbX" aria-label="إغلاق">×</button>
+  <button class="pv" id="lbP" aria-label="السابق">→</button>
+  <button class="nx" id="lbN" aria-label="التالي">←</button>
+  <img id="lbImg" alt="">
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ==========================================================
+   EDIT HERE — CONFIG
+   ========================================================== */
+const PHONE = "963996580460";            // international format for WhatsApp/tel
+const PHONE_DISPLAY = "0996 580 460";    // local display & copy format
+
+/* ==========================================================
+   IMAGE SLOTS — replace any "" with your own photo URL.
+   Empty string = colorful placeholder is generated automatically.
+   Orientation rules (keep them):
+     home   : [landscape, PORTRAIT (center), landscape]
+     shower : portrait 3:4   |  balcony, facade : landscape 16:9
+   ========================================================== */
+const IMAGES = {
+  home: [
+    "",   // HOME SLOT 1 — landscape (left)
+    "",   // HOME SLOT 2 — PORTRAIT (center)
+    ""    // HOME SLOT 3 — landscape (right)
+  ],
+  shower: [   // portrait 3:4
+    "", "", "", "", "", ""
+  ],
+  balcony: [  // landscape 16:9
+    "", "", "", "", "", ""
+  ],
+  facade: [   // landscape 16:9
+    "", "", "", "", "", ""
+  ]
+};
+
+/* ---------- Pages ---------- */
+const PAGES = [
+  {id:"home",    ar:"الرئيسية",       tr:"Right place"},
+  {id:"shower",  ar:"كبائن الاستحمام", tr:"Duşakabin"},
+  {id:"balcony", ar:"زجاج البلكون",   tr:"Cam Balkon"},
+  {id:"facade",  ar:"أعمال الواجهات", tr:"Vechaat"},
+  {id:"contact", ar:"تواصل معنا",     tr:"Tavasal Maane"}
+];
+const $ = s => document.querySelector(s);
+const toAr = n => String(n).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
+
+/* ---------- Placeholder generator (colorful, offline-safe) ---------- */
+function ph(i, ratio){
+  const w = ratio === "p" ? 600 : 800, h = ratio === "p" ? 800 : (ratio === "w" ? 450 : 600);
+  const hue = (i * 67 + 15) % 360;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="hsl(${hue},80%,58%)"/><stop offset="1" stop-color="hsl(${(hue+55)%360},85%,32%)"/></linearGradient></defs>
+  <rect width="${w}" height="${h}" fill="url(#g)"/>
+  <rect x="${w*.12}" y="${h*.1}" width="${w*.34}" height="${h*.8}" fill="#fff" opacity=".14"/>
+  <rect x="${w*.5}" y="${h*.1}" width="${w*.38}" height="${h*.8}" fill="#fff" opacity=".24"/>
+  <path d="M0 ${h} L${w*.6} 0 L${w*.75} 0 L${w*.15} ${h}Z" fill="#fff" opacity=".12"/></svg>`;
+  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+}
+const src = (key, i, ratio) => IMAGES[key][i] || ph(i + key.length, ratio);
+
+/* ---------- Build UI ---------- */
+$("#nav").innerHTML = PAGES.map(p => `<a href="#${p.id}" data-id="${p.id}">${p.ar}</a>`).join("");
+
+$("#services").innerHTML = PAGES.slice(1, 4).map((p, i) =>
+  `<a class="row" href="#${p.id}"><span class="n">0${i+1}</span><span class="t">${p.ar}</span><span class="tr">${p.tr}</span><span class="ar">←</span></a>`).join("");
+
+// Home trio: landscape | PORTRAIT (center) | landscape
+$("#trio").innerHTML = [
+  `<figure class="land"><img src="${src("home",0,"l")}" alt="عمل من أعمالنا" loading="lazy"></figure>`,
+  `<figure class="port"><img src="${src("home",1,"p")}" alt="عمل من أعمالنا" loading="lazy"></figure>`,
+  `<figure class="land"><img src="${src("home",2,"l")}" alt="عمل من أعمالنا" loading="lazy"></figure>`
+].join("");
+
+const RATIO = {shower:"p", balcony:"w", facade:"w"};
+Object.keys(RATIO).forEach(key => {
+  $("#g-" + key).innerHTML = IMAGES[key].map((_, i) =>
+    `<button type="button" data-k="${key}" data-i="${i}" aria-label="عرض الصورة ${toAr(i+1)}"><img src="${src(key,i,RATIO[key])}" alt="" loading="lazy"></button>`).join("");
+});
+
+/* ---------- Router (hash: #home, #shower, ...) ---------- */
+function route(){
+  const id = PAGES.some(p => p.id === location.hash.slice(1)) ? location.hash.slice(1) : "home";
+  document.querySelectorAll(".page").forEach(s => s.classList.toggle("on", s.id === "p-" + id));
+  document.querySelectorAll("nav a").forEach(a => a.classList.toggle("on", a.dataset.id === id));
+  $("#nav").classList.remove("open"); $("#burger").setAttribute("aria-expanded","false");
+  document.title = (id === "home" ? "" : PAGES.find(p => p.id === id).ar + " | ") + "أوستا للإكساء";
+  window.scrollTo(0, 0);
+}
+addEventListener("hashchange", route); route();
+
+$("#burger").onclick = () => {
+  const o = $("#nav").classList.toggle("open");
+  $("#burger").setAttribute("aria-expanded", o);
+};
+
+/* ---------- Lightbox ---------- */
+let cur = {k:null, i:0};
+const lb = $("#lb");
+function show(){ $("#lbImg").src = src(cur.k, cur.i, RATIO[cur.k]); }
+function step(d){ const n = IMAGES[cur.k].length; cur.i = (cur.i + d + n) % n; show(); }
+function closeLb(){ lb.classList.remove("on"); document.body.style.overflow = ""; }
+document.addEventListener("click", e => {
+  const b = e.target.closest(".grid button");
+  if (b){ cur = {k:b.dataset.k, i:+b.dataset.i}; show(); lb.classList.add("on"); document.body.style.overflow = "hidden"; }
+});
+$("#lbX").onclick = closeLb;
+$("#lbN").onclick = () => step(1);
+$("#lbP").onclick = () => step(-1);
+lb.addEventListener("click", e => { if (e.target === lb) closeLb(); });
+addEventListener("keydown", e => {
+  if (!lb.classList.contains("on")) return;
+  if (e.key === "Escape") closeLb();
+  if (e.key === "ArrowLeft") step(1);
+  if (e.key === "ArrowRight") step(-1);
+});
+
+/* ---------- Contact ---------- */
+$("#phoneTxt").textContent = PHONE_DISPLAY;
+$("#waBtn").href = "https://wa.me/" + PHONE;
+$("#callBtn").href = "tel:" + PHONE_DISPLAY.replace(/\s+/g, "");
+
+function toast(t){
+  const el = $("#toast"); el.textContent = t; el.classList.add("on");
+  clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("on"), 2200);
+}
+$("#copyBtn").onclick = async () => {
+  try { await navigator.clipboard.writeText(PHONE_DISPLAY); toast("تم نسخ الرقم"); }
+  catch (_) { toast("تعذر النسخ، انسخ الرقم يدوياً"); }
+};
+$("#form").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target, name = f.name.value.trim(), phone = f.phone.value.trim();
+  if (!name || phone.replace(/\D/g, "").length < 7){ $("#err").textContent = "يرجى إدخال الاسم ورقم جوال صحيح."; return; }
+  $("#err").textContent = "";
+  const text = `طلب معاينة وقياس\nالاسم: ${name}\nالجوال: ${phone}\nالخدمة: ${f.service.value}\nالتفاصيل: ${f.msg.value.trim() || "-"}`;
+  window.open("https://wa.me/" + PHONE + "?text=" + encodeURIComponent(text), "_blank", "noopener");
+  f.reset(); toast("تم تجهيز رسالتك في واتساب");
+});
+</script>
+</body>
+</html>
